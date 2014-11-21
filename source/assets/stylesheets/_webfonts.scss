@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'roice-msc';
+  src: url('/assets/fonts/roice-mediumsc-webfont.eot');
+  src: url('/assets/fonts/roice-mediumsc-webfont.eot?#iefix') format('embedded-opentype'),
+       url('/assets/fonts/roice-mediumsc-webfont.woff2')      format('woff2'),
+       url('/assets/fonts/roice-mediumsc-webfont.woff')       format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'roice-m';
+  src: url('/assets/fonts/roice-medium-webfont.eot');
+  src: url('/assets/fonts/roice-medium-webfont.eot?#iefix') format('embedded-opentype'),
+       url('/assets/fonts/roice-medium-webfont.woff2')      format('woff2'),
+       url('/assets/fonts/roice-medium-webfont.woff')       format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'roice-r';
+  src: url('/assets/fonts/roice-regular-webfont.eot');
+  src: url('/assets/fonts/roice-regular-webfont.eot?#iefix') format('embedded-opentype'),
+       url('/assets/fonts/roice-regular-webfont.woff2')      format('woff2'),
+       url('/assets/fonts/roice-regular-webfont.woff')       format('woff');
+  font-weight: normal;
+  font-style: normal;
+}

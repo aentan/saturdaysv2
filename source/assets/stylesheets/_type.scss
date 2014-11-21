@@ -1,0 +1,53 @@
+body {
+  font-family: $text-font-family;
+  font-weight: $text-font-weight;
+  line-height: $line-height-base;
+  font-size: $font-size-base;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: $heading-font-family;
+  font-weight: $heading-font-weight;
+}
+
+h1, .h1 { font-size: $font-size-h1; }
+h2, .h2 { font-size: $font-size-h2; }
+h3, .h3 { font-size: $font-size-h3; }
+h4, .h4 { font-size: $font-size-h4; }
+h5, .h5 { font-size: $font-size-h5; }
+h6, .h6 { font-size: $font-size-h6; }
+
+strong, b {
+  font-family: $strong-font-family;
+  font-weight: $strong-font-weight;
+}
+
+p.lead {
+  font-size: $font-size-lead;
+  line-height: $line-height-lead;
+  strong {
+    font-family: $heading-font-family;
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+@include selection(cyan, $text-color);
+
+.bug {
+  @include bullseye();
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  padding: 2px 0 6px;
+  font-size: 24px;
+  line-height: 24px;
+  text-align: center;
+  border: 1px solid $grid-border;
+  border-radius: 50%;
+  background-color: $brand-primary;
+}

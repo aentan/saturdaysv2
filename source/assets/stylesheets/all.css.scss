@@ -1,0 +1,165 @@
+@import 'variables';
+@import 'mixins';
+@import 'normalize';
+@import 'webfonts';
+@import 'type';
+@import 'buttons';
+@import 'fluidbox';
+
+// Normalize box-sizing
+* {
+  box-sizing: border-box;
+}
+
+
+// Scaffold
+
+a {
+  color: $text-color;
+}
+
+.img-responsive {
+  @include img-responsive;
+}
+
+
+// Layout
+
+body {
+  background-color: $body-bg;
+  color: $text-color;
+  > section {
+    background-color: $body-bg;
+  }
+}
+
+
+// Hide elements according to resolution
+
+@media (max-width: $screen-sm-max) {
+  .responsive-xs {
+    display: block;
+  }
+  .responsive-md {
+    display: none;
+  }
+}
+
+@media (min-width: $screen-md-min) {
+  .responsive-xs {
+    display: none;
+  }
+  .responsive-md {
+    display: block;
+  }
+}
+
+
+// Navbar
+
+.navbar {
+  height: 64px;
+  background-color: $body-bg;
+  overflow: hidden;
+}
+
+.navbar-brand {
+  @include text-hide();
+  display: block;
+  position: absolute;
+  left: 16px;
+  top: 12px;
+  width: 85px;
+  height: 40px;
+  background: image-url('saturdays-logo.png') no-repeat 0 0;
+  background-size: 85px 40px;
+  @media (min-width: $screen-md-min) {
+    left: 16px;
+    top: 8px;
+    width: 135px;
+    height: 56px;
+    background-size: 135px 64px;
+  }
+}
+
+.navbar nav {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  ul {
+    margin: 0;
+    padding: 0;
+    li {
+      float: left;
+      display: inline-block;
+      margin-left: 8px;
+    }
+  }
+}
+
+
+// Intro
+
+#intro {
+  @include bullseye;
+  position: relative;
+  z-index: $z-section;
+  color: #fff;
+  max-width: $screen-md;
+  text-align: center;
+  margin-top: -64px;
+  margin-bottom: 32px;
+  padding: 0 32px;
+  h1 {
+    margin: 0;
+  }
+  p {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 352px;
+  }
+}
+
+
+// Content Sections
+
+[id^="content-"] {
+  position: relative;
+  padding-left: 32px;
+  padding-right: 32px;
+  .container {
+    margin: 96px auto;
+    max-width: $screen-sm;
+    text-align: center;
+  }
+}
+
+#content-try {
+  padding-top: 96px;
+  @media (min-width: $screen-sm-min) {
+    padding-top: 128px;
+  }
+  @media (min-width: $screen-md-min) {
+    padding-top: 192px;
+  }
+  #collage {
+    position: absolute;
+    top: -96px;
+    left: 0;
+    width: 100%;
+    height: 201px;
+    background: image-url('categories-collage.png') no-repeat 0 0;
+    background-size: 768px 201px;
+    @media (min-width: $screen-sm-min) {
+      top: -128px;
+      background-size: 992px 261px;
+      height: 261px;
+    }
+    @media (min-width: $screen-md-min) {
+      top: -192px;
+      background-size: 1440px 378px;
+      height: 378px;
+    }
+  }
+}
+
