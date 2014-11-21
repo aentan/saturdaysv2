@@ -22,21 +22,64 @@ title: Saturdays
   </div>
 </div>
 
-<section id="content-try">
+<section id="try" class="content">
   <div class="container">
     <p>他のジムのプログラムに目移りしたこと、ありませんか？ ＮＹではやりのプログラム、ちょっと試してみませんか？ エアロビクスも、ボクササイズも、ボルダリングも、 Saturdaysならなんでも楽しく運動できます！</p>
   </div>
   <div id="collage"></div>
 </section>
 
-<div class="img-holder responsive-xs" data-image="<%= image_path('bg-geo-xs.jpg') %>" data-width="750" data-height="928" data-add-classes="responsive-xs"></div>
-<div class="img-holder responsive-md" data-image="<%= image_path('bg-geo-md.jpg') %>" data-width="2048" data-height="1120" data-add-classes="responsive-md"></div>
+<div class="img-holder responsive-xs" data-image="<%= image_path('bg-geo-xs.jpg') %>" data-width="750" data-height="928" data-add-classes="responsive-xs">
+  <h2>都内で好きなジムから好きなプログラムを選び放題！</h2>
+</div>
+<div class="img-holder responsive-md" data-image="<%= image_path('bg-geo-md.jpg') %>" data-width="2048" data-height="1120" data-add-classes="responsive-md">
+  <h2>都内で好きなジムから好きなプログラムを選び放題！</h2>
+</div>
 
-<section id="content-fee">
+<section id="fee" class="content">
   <div class="container">
     <p>月々￥10,000で１０回まで、１００件以上の中からあなたが選んだ最高のジムで、毎回毎回バラエティ豊かなプログラムをお楽しみいただけます。</p>
   </div>
 </section>
 
-<div class="img-holder" data-image="<%= image_path('bg-content-1.jpg') %>" data-width="2048" data-height="1120"></div>
+<div class="img-holder" data-image="<%= image_path('bg-content-1.jpg') %>" data-width="2048" data-height="1120">
+  <h2>さっそく Saturdaysを始めてみよう！</h2>
+</div>
 
+<section id="filters" class="content">
+  <div class="container">
+    <h2>絞り込み</h2>
+    <div id="filter-time" class="filter">
+      <div class="filter-head"><span>時間帯</span></div>
+      <label class="filter-option"><span>05：00～12：00<input type="checkbox" checked="checked"></span></label>
+      <label class="filter-option"><span>12：00～17：00<input type="checkbox" checked="checked"></span></label>
+      <label class="filter-option"><span>17：00～20：00<input type="checkbox" checked="checked"></span></label>
+    </div>
+    <div id="filter-location" class="filter">
+      <div class="filter-head"><span>場所</span></div>
+      <label class="filter-option"><span>渋谷<input type="checkbox" checked="checked"></span></label>
+      <label class="filter-option"><span>原宿 / 表参道<input type="checkbox" checked="checked"></span></label>
+      <label class="filter-option"><span>恵比寿 / 代官山<input type="checkbox" checked="checked"></span></label>
+      <label class="filter-option"><span>中目黒<input type="checkbox" checked="checked"></span></label>
+      <label class="filter-option"><span>その他<input type="checkbox" checked="checked"></span></label>
+    </div>
+    <div id="filter-categories" class="filter">
+      <div class="filter-head"><span>カテゴリー</span></div>
+      <label class="filter-option"><span>ヨガ / ピラティス<input type="checkbox" checked="checked"></span></label>
+      <label class="filter-option"><span>エアロビクス<input type="checkbox" checked="checked"></span></label>
+      <label class="filter-option"><span>ボクササイズ<input type="checkbox" checked="checked"></span></label>
+      <label class="filter-option"><span>ダンス<input type="checkbox" checked="checked"></span></label>
+      <label class="filter-option"><span>体操 / ストレッチ<input type="checkbox" checked="checked"></span></label>
+      <label class="filter-option"><span>テニス<input type="checkbox" checked="checked"></span></label>
+      <label class="filter-option"><span>ゴルフ<input type="checkbox" checked="checked"></span></label>
+      <label class="filter-option"><span>ワークアウト<input type="checkbox" checked="checked"></span></label>
+      <label class="filter-option"><span>アクア<input type="checkbox" checked="checked"></span></label>
+      <label class="filter-option"><span>その他<input type="checkbox" checked="checked"></span></label>
+    </div>
+    <button class="filter-apply">絞り込み</button>
+  </div>
+</section>
+
+<section id="listings">
+  
+</section>

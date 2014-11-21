@@ -85,7 +85,7 @@ body {
 .navbar nav {
   position: absolute;
   right: 16px;
-  top: 16px;
+  top: 10px;
   ul {
     margin: 0;
     padding: 0;
@@ -114,16 +114,34 @@ body {
     margin: 0;
   }
   p {
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto 32px;
     max-width: 352px;
+  }
+}
+
+
+// Image Holder
+
+.img-holder,
+.imageHolder {
+  h2 {
+    @include bullseye;
+    position: absolute;
+    padding: 0 32px;
+    color: white;
+    font-size: 32px;
+    text-align: center;
+    z-index: $z-section;
+    width: 100%;
+    margin: 0;
+    max-width: $screen-md;
   }
 }
 
 
 // Content Sections
 
-[id^="content-"] {
+.content {
   position: relative;
   padding-left: 32px;
   padding-right: 32px;
@@ -134,7 +152,7 @@ body {
   }
 }
 
-#content-try {
+#try {
   padding-top: 96px;
   @media (min-width: $screen-sm-min) {
     padding-top: 128px;
@@ -163,3 +181,94 @@ body {
   }
 }
 
+#filters {
+  padding: 0;
+  border-bottom: 1px solid $grid-border;
+  h2 {
+    text-align: center;
+  }
+  .container {
+    max-width: 100%;
+    margin: 32px auto 0;
+    text-align: left;
+  }
+  .filter {
+    float: left;
+    width: 100%;
+    border-left: 1px solid $grid-border;
+    margin-top: 16px;
+    @media (min-width: $screen-sm-min) {
+      width: 50%;
+    }
+    @media (min-width: $screen-md-min) {
+      width: 25%;
+    }
+  }
+  .filter-head,
+  .filter-option {
+    position: relative;
+    float: left;
+    width: 100%;
+    &:before {
+      position: absolute;
+      content: '';
+      width: 32px;
+      height: 48px;
+      background: $body-bg;
+      left: 0;
+      top: 0;
+    }
+    span {
+      display: block;
+      padding: 4px 0 4px 32px;
+    }
+  }
+  .filter-head {
+    color: $brand-primary;
+  }
+  .filter-option {
+    cursor: pointer;
+    span {
+      border-top: 1px solid $grid-border;
+    }
+    input[type="checkbox"] {
+      position: absolute;
+      right: 4px;
+      top: 4px;
+      &:after {
+        content: '';
+        position: absolute;
+        right: -4px;
+        top: -3px;
+        width: 48px;
+        height: 48px;
+        background-color: $body-bg;
+      }
+      &:checked:after {
+        background: $body-bg image-url('checkmark.png') 50% 50% no-repeat;
+        background-size: 12px 10px;
+      }
+    }
+  }
+  #filter-categories {
+    @media (min-width: $screen-sm-min) {
+      width: 100%;
+    }
+    @media (min-width: $screen-md-min) {
+      width: 50%;
+    }
+    .filter-option {
+      @media (min-width: $screen-sm-min) {
+        width: 50%;
+      }
+    }
+  }
+  .filter-apply {
+    border: 0;
+    background: none;
+    width: 100%;
+    height: 80px;
+    border-top: 1px solid $grid-border;
+    color: $brand-primary;
+  }
+}
