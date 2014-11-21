@@ -37,17 +37,3 @@ p.lead {
 }
 
 @include selection(cyan, $text-color);
-
-.bug {
-  @include bullseye();
-  position: absolute;
-  width: 32px;
-  height: 32px;
-  padding: 2px 0 6px;
-  font-size: 24px;
-  line-height: 24px;
-  text-align: center;
-  border: 1px solid $grid-border;
-  border-radius: 50%;
-  background-color: $brand-primary;
-}
