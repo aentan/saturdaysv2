@@ -106,13 +106,14 @@ body {
   position: relative;
   z-index: $z-section;
   color: #fff;
-  max-width: $screen-xs;
+  max-width: $screen-xxs;
   text-align: center;
-  margin-top: -64px;
+  margin-top: 8px;
   margin-bottom: 32px;
-  padding: 0 32px;
   @media (min-width: $screen-sm-min) {
     max-width: $screen-sm;
+    margin-top: -64px;
+    padding: 0 32px;
   }
   @media (min-width: $screen-md-min) {
     max-width: $screen-md;
@@ -123,7 +124,7 @@ body {
   }
   p {
     margin: 0 auto 32px;
-    max-width: $screen-xs;
+    max-width: $screen-xxs;
     @media (min-width: $screen-sm-min) {
       max-width: $screen-sm;
     }
@@ -141,12 +142,12 @@ body {
   .caption {
     @include bullseye;
     position: absolute;
-    padding: 0 32px;
+    padding: 32px;
     text-align: center;
     z-index: $z-section;
     width: 100%;
     color: white;
-    max-width: $screen-xs;
+    max-width: $screen-xxs;
     @media (min-width: $screen-sm-min) {
       max-width: $screen-sm;
     }
