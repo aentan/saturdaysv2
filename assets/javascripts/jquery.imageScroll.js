@@ -1,1 +1,371 @@
-!function(t,i){"function"==typeof define&&define.amd?define(["jquery"],i):i(t.jQuery)}(this,function(t){"use strict";function i(t,i){return typeof t===i}function e(t,i){return!!~(""+t).indexOf(i)}function s(t,i){for(var s in t){var o=t[s];if(!e(o,"-")&&void 0!==m[o])return"pfx"==i?o:!0}return!1}function o(t,e,s){for(var o in t){var n=e[t[o]];if(void 0!==n)return s===!1?t[o]:i(n,"function")?n.bind(s||e):n}return!1}function n(t,e,n){var r=t.charAt(0).toUpperCase()+t.slice(1),l=(t+" "+u.join(r+" ")+r).split(" ");return i(e,"string")||i(e,"undefined")?s(l,e):(l=(t+" "+p.join(r+" ")+r).split(" "),o(l,e,n))}var r,l,a={image:null,imageAttribute:"image",holderClass:"imageHolder",container:t("body"),speed:.2,coverRatio:.75,holderMinHeight:200,extraHeight:0,mediaWidth:1600,mediaHeight:900,parallax:!0,touch:!1},h={},d=document.documentElement,c="imageScrollModernizr",g=document.createElement(c),m=g.style,f="Webkit Moz O ms",u=f.split(" "),p=f.toLowerCase().split(" "),H={},v=t(window),x=0,$="",b=function(t,i,e,s){var o,n,r,l,a=document.createElement("div"),h=document.body,g=h||document.createElement("body");if(parseInt(e,10))for(;e--;)r=document.createElement("div"),r.id=s?s[e]:c+(e+1),a.appendChild(r);return o=["&#173;",'<style id="s',c,'">',t,"</style>"].join(""),a.id=c,(h?a:g).innerHTML+=o,g.appendChild(a),h||(g.style.background="",g.style.overflow="hidden",l=d.style.overflow,d.style.overflow="hidden",d.appendChild(g)),n=i(a,t),h?a.parentNode.removeChild(a):(g.parentNode.removeChild(g),d.style.overflow=l),!!n};return H.csstransforms=function(){return!!n("transform")},H.csstransforms3d=function(){var t=!!n("perspective");return t&&"webkitPerspective"in d.style&&b("@media (transform-3d),(-webkit-transform-3d){#imageScrollModernizr{left:9px;position:absolute;height:3px;}}",function(i){t=9===i.offsetLeft&&3===i.offsetHeight}),t},h.prefixed=function(t,i,e){return i?n(t,i,e):n(t,"pfx")},window.requestAnimationFrame=h.prefixed("requestAnimationFrame",window)||function(t){var i=(new Date).getTime(),e=Math.max(0,16-(i-x)),s=window.setTimeout(function(){t(i+e)},e);return x=i+e,s},H.csstransforms3d()?$="csstransforms3d":H.csstransforms()&&($="csstransforms"),""!==$&&(l=h.prefixed("transform")),r=function(i,e){return{init:function(){if(this.$imageHolder=t(i),this.settings=t.extend({},a,e),this.image=this.$imageHolder.data(this.settings.imageAttribute)||this.settings.image,this.mediaWidth=this.$imageHolder.data("width")||this.settings.mediaWidth,this.mediaHeight=this.$imageHolder.data("height")||this.settings.mediaHeight,this.coverRatio=this.$imageHolder.data("cover-ratio")||this.settings.coverRatio,this.extraHeight=this.$imageHolder.data("extra-height")||this.settings.extraHeight,this.additionalClasses=this.$imageHolder.data("add-classes")||"",this.ticking=!1,!this.image)throw new Error("You need to provide either a data-img attr or an image option");this.$scrollingElement=t("<img/>",{src:this.image}),this.settings.touch===!0?this.$scrollingElement.css({maxWidth:"100%"}).prependTo(this.$imageHolder):this.settings.parallax===!0?(this.$scrollerHolder=t("<div/>",{html:this.$imageHolder.html()}).css({top:0,visibility:"hidden",position:"fixed",overflow:"hidden"}).addClass(this.settings.holderClass).prependTo(this.settings.container),this.$imageHolder.css("visibility","hidden").empty(),this.$scrollingElement.css({position:"absolute",visibility:"hidden",maxWidth:"none"}).prependTo(this.$scrollerHolder)):(this.$scrollerHolder=this.$imageHolder.css({overflow:"hidden"}),this.$scrollingElement.css({position:"relative",overflow:"hidden"}).prependTo(this.$imageHolder)),this.settings.touch===!1&&(this._adjustImgHolderHeights(),this.settings.parallax===!0?this._updatePositions():this._updateFallbackPositions(),this._bindEvents())},_adjustImgHolderHeights:function(){var t,i,e,s,o,n,r,l,a,h=v.height(),d=v.width()-this.settings.container.offset().left,c=this.coverRatio*h;c=(this.settings.holderMinHeight<c?Math.floor(c):this.settings.holderMinHeight)+this.extraHeight,l=Math.floor(h-(h-c)*this.settings.speed),n=Math.round(this.mediaWidth*(l/this.mediaHeight)),n>=d?r=l:(n=d,r=Math.round(this.mediaHeight*(n/this.mediaWidth))),a=l-c,o=h+c,s=2*h*(1-this.settings.speed)-a,t=-(a/2+(r-l)/2),i=Math.round((n-d)*-.5),e=t-s/2,this.$scrollingElement.css({height:r,width:n}),this.$imageHolder.height(c),this.$scrollerHolder.css({height:c,width:n}),this.$scrollerHolder.addClass(this.additionalClasses),this.scrollingState={winHeight:h,fromY:e,imgTopPos:t,imgLeftPos:i,imgHolderHeight:c,imgScrollingDistance:s,travelDistance:o,holderDistanceFromTop:this.$imageHolder.offset().top-v.scrollTop()}},_bindEvents:function(){var t=this;v.on("resize",function(){t._adjustImgHolderHeights(),t.settings.parallax===!0?t._requestTick():t._updateFallbackPositions()}),this.settings.parallax===!0&&v.on("scroll",function(){t.scrollingState.holderDistanceFromTop=t.$imageHolder.offset().top-v.scrollTop(),t._requestTick()})},_requestTick:function(){var t=this;this.ticking||(this.ticking=!0,requestAnimationFrame(function(){t._updatePositions()}))},_updatePositions:function(){if(this.scrollingState.holderDistanceFromTop<=this.scrollingState.winHeight&&this.scrollingState.holderDistanceFromTop>=-this.scrollingState.imgHolderHeight){var t=this.scrollingState.holderDistanceFromTop+this.scrollingState.imgHolderHeight,i=t/this.scrollingState.travelDistance,e=Math.round(this.scrollingState.fromY+this.scrollingState.imgScrollingDistance*(1-i)),s=this.settings.container.offset().left;this.$scrollerHolder.css(this._getCSSObject({transform:l,left:s,x:Math.ceil(this.scrollingState.imgLeftPos)+(""===$&&s>0?s:0),y:Math.round(this.scrollingState.holderDistanceFromTop),visibility:"visible"})),this.$scrollingElement.css(this._getCSSObject({transform:l,x:0,y:e,visibility:"visible"}))}else this.$scrollerHolder.css({visibility:"hidden"}),this.$scrollingElement.css({visibility:"hidden"});this.ticking=!1},_updateFallbackPositions:function(){this.$scrollerHolder.css({width:"100%"}),this.$scrollingElement.css({top:this.scrollingState.imgTopPos,left:this.scrollingState.imgLeftPos})},_getCSSObject:function(t){return"csstransforms3d"===$?t.transform="translate3d("+t.x+"px, "+t.y+"px, 0)":"csstransforms"===$?t.transform="translate("+t.x+"px, "+t.y+"px)":(t.top=t.y,t.left=t.x),t}}},r.defaults=a,t.fn.imageScroll=function(t){return this.each(function(){new r(this,t).init()})},r});
+/**
+ * Parallax ImageScroll - jQuery plugin
+ * Author: Peder A. Nielsen
+ * Created date: 04.12.13
+ * Updated date: 07.06.14
+ * Version: 0.1.4
+ * Company: Making Waves
+ * Licensed under the MIT license
+ */
+
+;
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(['jquery'], factory);
+    } else {
+        // Browser globals
+        factory(root.jQuery);
+    }
+}(this, function ($) {
+    "use strict";
+
+    var ImageScroll,
+        defaults = {
+            image: null,
+            imageAttribute: 'image',
+            holderClass: 'imageHolder',
+            container: $('body'),
+            speed: 0.2,
+            coverRatio: 0.75,
+            holderMinHeight: 200,
+            extraHeight: 0,
+            mediaWidth: 1600,
+            mediaHeight: 900,
+            parallax: true,
+            touch: false
+        },
+        ImageScrollModernizr = {},
+        docElement = document.documentElement,
+        mod = 'imageScrollModernizr',
+        modElem = document.createElement(mod),
+        mStyle = modElem.style,
+        omPrefixes = 'Webkit Moz O ms',
+        cssomPrefixes = omPrefixes.split(' '),
+        domPrefixes = omPrefixes.toLowerCase().split(' '),
+        tests = {},
+        $win = $(window),
+        lastTickTime = 0,
+        supportedFeature = '',
+        transformProperty,
+        injectElementWithStyles = function (rule, callback, nodes, testnames) {
+
+            var style, ret, node, docOverflow,
+                div = document.createElement('div'),
+                body = document.body,
+                fakeBody = body || document.createElement('body');
+
+            if (parseInt(nodes, 10)) {
+                while (nodes--) {
+                    node = document.createElement('div');
+                    node.id = testnames ? testnames[nodes] : mod + (nodes + 1);
+                    div.appendChild(node);
+                }
+            }
+
+            style = ['&#173;', '<style id="s', mod, '">', rule, '</style>'].join('');
+            div.id = mod;
+            (body ? div : fakeBody).innerHTML += style;
+            fakeBody.appendChild(div);
+            if (!body) {
+                fakeBody.style.background = '';
+                fakeBody.style.overflow = 'hidden';
+                docOverflow = docElement.style.overflow;
+                docElement.style.overflow = 'hidden';
+                docElement.appendChild(fakeBody);
+            }
+
+            ret = callback(div, rule);
+            if (!body) {
+                fakeBody.parentNode.removeChild(fakeBody);
+                docElement.style.overflow = docOverflow;
+            } else {
+                div.parentNode.removeChild(div);
+            }
+
+            return !!ret;
+
+        };
+
+    function is(obj, type) {
+        return typeof obj === type;
+    }
+
+    function contains(str, substr) {
+        return !!~('' + str).indexOf(substr);
+    }
+
+    function testProps(props, prefixed) {
+        for (var i in props) {
+            var prop = props[i];
+            if (!contains(prop, "-") && mStyle[prop] !== undefined) {
+                return prefixed == 'pfx' ? prop : true;
+            }
+        }
+        return false;
+    }
+
+    function testDOMProps(props, obj, elem) {
+        for (var i in props) {
+            var item = obj[props[i]];
+            if (item !== undefined) {
+
+                if (elem === false) return props[i];
+
+                if (is(item, 'function')) {
+                    return item.bind(elem || obj);
+                }
+
+                return item;
+            }
+        }
+        return false;
+    }
+
+    function testPropsAll(prop, prefixed, elem) {
+        var ucProp = prop.charAt(0).toUpperCase() + prop.slice(1),
+            props = (prop + ' ' + cssomPrefixes.join(ucProp + ' ') + ucProp).split(' ');
+
+        if (is(prefixed, "string") || is(prefixed, "undefined")) {
+            return testProps(props, prefixed);
+        } else {
+            props = (prop + ' ' + (domPrefixes).join(ucProp + ' ') + ucProp).split(' ');
+            return testDOMProps(props, prefixed, elem);
+        }
+    }
+
+    tests['csstransforms'] = function () {
+        return !!testPropsAll('transform');
+    };
+
+    tests['csstransforms3d'] = function () {
+
+        var ret = !!testPropsAll('perspective');
+
+        if (ret && 'webkitPerspective' in docElement.style) {
+
+            injectElementWithStyles('@media (transform-3d),(-webkit-transform-3d){#imageScrollModernizr{left:9px;position:absolute;height:3px;}}', function (node, rule) {
+                ret = node.offsetLeft === 9 && node.offsetHeight === 3;
+            });
+        }
+        return ret;
+    };
+
+    ImageScrollModernizr.prefixed = function (prop, obj, elem) {
+        if (!obj) {
+            return testPropsAll(prop, 'pfx');
+        } else {
+            return testPropsAll(prop, obj, elem);
+        }
+    };
+
+    window.requestAnimationFrame = ImageScrollModernizr.prefixed('requestAnimationFrame', window) || function (callback, element) {
+        var currTime = new Date().getTime();
+        var timeToCall = Math.max(0, 16 - (currTime - lastTickTime));
+        var id = window.setTimeout(function () {
+                callback(currTime + timeToCall);
+            },
+            timeToCall);
+        lastTickTime = currTime + timeToCall;
+        return id;
+    };
+
+    if (tests['csstransforms3d']()) {
+        supportedFeature = 'csstransforms3d';
+    } else if (tests['csstransforms']()) {
+        supportedFeature = 'csstransforms';
+    }
+
+    if (supportedFeature !== '') {
+        transformProperty = ImageScrollModernizr.prefixed('transform');
+    }
+
+    ImageScroll = function (imageHolder, options) {
+        return {
+            init: function () {
+                this.$imageHolder = $(imageHolder);
+                this.settings = $.extend({}, defaults, options);
+                this.image = this.$imageHolder.data(this.settings.imageAttribute) || this.settings.image;
+                this.mediaWidth = this.$imageHolder.data('width') || this.settings.mediaWidth;
+                this.mediaHeight = this.$imageHolder.data('height') || this.settings.mediaHeight;
+                this.coverRatio = this.$imageHolder.data('cover-ratio') || this.settings.coverRatio;
+                this.extraHeight = this.$imageHolder.data('extra-height') || this.settings.extraHeight;
+                this.additionalClasses = this.$imageHolder.data('add-classes') || '';
+                this.ticking = false;
+
+                if (this.image) {
+                    this.$scrollingElement = $('<img/>', {
+                        src: this.image
+                    });
+                } else {
+                    throw new Error('You need to provide either a data-img attr or an image option');
+                }
+
+                if (this.settings.touch === true) {
+                    this.$scrollingElement.css({maxWidth: '100%'}).prependTo(this.$imageHolder);
+                } else if (this.settings.parallax === true) {
+                    this.$scrollerHolder = $('<div/>', {
+                        html: this.$imageHolder.html()
+                    }).css({
+                        top: 0,
+                        visibility: 'hidden',
+                        position: 'fixed',
+                        overflow: 'hidden'
+                    }).addClass(this.settings.holderClass).prependTo(this.settings.container);
+                    this.$imageHolder.css('visibility', 'hidden').empty();
+                    this.$scrollingElement.css({position: 'absolute', visibility: 'hidden', maxWidth: 'none'}).prependTo(this.$scrollerHolder);
+                } else {
+                    this.$scrollerHolder = this.$imageHolder.css({overflow: 'hidden'});
+                    this.$scrollingElement.css({position: 'relative', overflow: 'hidden'}).prependTo(this.$imageHolder);
+                }
+
+                if (this.settings.touch === false) {
+                    this._adjustImgHolderHeights();
+                    if (this.settings.parallax === true) {
+                        this._updatePositions();
+                    }
+                    else {
+                        this._updateFallbackPositions();
+                    }
+                    this._bindEvents();
+                }
+            },
+            _adjustImgHolderHeights: function () {
+                var winHeight = $win.height(),
+                    winWidth = $win.width() - this.settings.container.offset().left,
+                    imgHolderHeight = this.coverRatio * winHeight,
+                    imgTopPos,
+                    imgLeftPos,
+                    fromY,
+                    imgScrollingDistance,
+                    travelDistance,
+                    imgWidth,
+                    imgHeight,
+                    fakedImgHeight,
+                    imageDiff;
+                imgHolderHeight = (this.settings.holderMinHeight < imgHolderHeight ? Math.floor(imgHolderHeight) : this.settings.holderMinHeight) + this.extraHeight;
+                fakedImgHeight = Math.floor(winHeight - (winHeight - imgHolderHeight) * this.settings.speed);
+                imgWidth = Math.round(this.mediaWidth * (fakedImgHeight / this.mediaHeight));
+
+                if (imgWidth >= winWidth) {
+                    imgHeight = fakedImgHeight;
+                } else {
+                    imgWidth = winWidth;
+                    imgHeight = Math.round(this.mediaHeight * (imgWidth / this.mediaWidth));
+                }
+
+                imageDiff = fakedImgHeight - imgHolderHeight;
+                travelDistance = winHeight + imgHolderHeight;
+                imgScrollingDistance = (((winHeight * 2) * (1 - this.settings.speed)) - imageDiff);
+                imgTopPos = -((imageDiff / 2) + ((imgHeight - fakedImgHeight) / 2));
+                imgLeftPos = Math.round((imgWidth - winWidth) * -0.5);
+                fromY = imgTopPos - (imgScrollingDistance / 2);
+
+                this.$scrollingElement.css({
+                    height: imgHeight,
+                    width: imgWidth
+                });
+                this.$imageHolder.height(imgHolderHeight);
+
+                this.$scrollerHolder.css({
+                    height: imgHolderHeight,
+                    width: imgWidth
+                });
+                
+                this.$scrollerHolder.addClass(this.additionalClasses);
+
+                this.scrollingState = {
+                    winHeight: winHeight,
+                    fromY: fromY,
+                    imgTopPos: imgTopPos,
+                    imgLeftPos: imgLeftPos,
+                    imgHolderHeight: imgHolderHeight,
+                    imgScrollingDistance: imgScrollingDistance,
+                    travelDistance: travelDistance,
+                    holderDistanceFromTop: this.$imageHolder.offset().top - $win.scrollTop()
+                };
+            },
+            _bindEvents: function () {
+                var self = this;
+                $win.on('resize', function (evt) {
+                    self._adjustImgHolderHeights();
+                    if (self.settings.parallax === true) {
+                        self._requestTick();
+                    } else {
+                        self._updateFallbackPositions();
+                    }
+                });
+                if (this.settings.parallax === true) {
+                    $win.on('scroll', function (evt) {
+                        self.scrollingState.holderDistanceFromTop = self.$imageHolder.offset().top - $win.scrollTop();
+                        self._requestTick();
+                    });
+                }
+            },
+            _requestTick: function () {
+                var self = this;
+                if (!this.ticking) {
+                    this.ticking = true;
+                    requestAnimationFrame(function () {
+                        self._updatePositions();
+                    });
+                }
+            },
+            _updatePositions: function () {
+                if (this.scrollingState.holderDistanceFromTop <= (this.scrollingState.winHeight) && this.scrollingState.holderDistanceFromTop >= -this.scrollingState.imgHolderHeight) {
+                    var distanceFromTopAddedWinHeight = this.scrollingState.holderDistanceFromTop + this.scrollingState.imgHolderHeight,
+                        distanceInPercent = distanceFromTopAddedWinHeight / this.scrollingState.travelDistance,
+                        currentImgYPosition = Math.round(this.scrollingState.fromY + (this.scrollingState.imgScrollingDistance * (1 - distanceInPercent))),
+                        leftOffset = this.settings.container.offset().left;
+
+                    this.$scrollerHolder.css(this._getCSSObject({
+                        transform: transformProperty,
+                        left: leftOffset,
+                        x: Math.ceil(this.scrollingState.imgLeftPos) + (supportedFeature === '' && leftOffset > 0 ? leftOffset : 0),
+                        y: Math.round(this.scrollingState.holderDistanceFromTop),
+                        visibility: 'visible'
+                    }));
+
+                    this.$scrollingElement.css(this._getCSSObject({
+                        transform: transformProperty,
+                        x: 0,
+                        y: currentImgYPosition,
+                        visibility: 'visible'
+                    }));
+                } else {
+                    this.$scrollerHolder.css({visibility: 'hidden'});
+                    this.$scrollingElement.css({visibility: 'hidden'});
+                }
+
+                this.ticking = false;
+            },
+            _updateFallbackPositions: function () {
+                this.$scrollerHolder.css({width: '100%'});
+                this.$scrollingElement.css({
+                    top: this.scrollingState.imgTopPos,
+                    left: this.scrollingState.imgLeftPos
+                });
+            },
+            _getCSSObject: function (options) {
+                if (supportedFeature === "csstransforms3d") {
+                    options.transform = "translate3d(" + options.x + "px, " + options.y + "px, 0)";
+                } else if (supportedFeature === "csstransforms") {
+                    options.transform = "translate(" + options.x + "px, " + options.y + "px)";
+                } else {
+                    options.top = options.y;
+                    options.left = options.x;
+                }
+                return options;
+            }
+        };
+    };
+
+    ImageScroll.defaults = defaults;
+    $.fn.imageScroll = function (options) {
+        return this.each(function () {
+            new ImageScroll(this, options).init();
+        });
+    };
+
+    return ImageScroll;
+}));

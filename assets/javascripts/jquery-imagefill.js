@@ -19,4 +19,87 @@
  * imagesLoaded - https://github.com/desandro/imagesloaded
  *
  */
-!function(t){t.fn.imagefill=function(i){function e(){u=0,d=0,o.each(function(){s=t(this).find("img").width()/t(this).find("img").height();var i=t(this).outerWidth(),e=t(this).outerHeight();u+=t(this).outerHeight(),d+=t(this).outerWidth();var h=i/e;t(this).find("img").css(s>h?{width:"auto",height:e,top:0,left:-(e*s-i)/2}:{width:i,height:"auto",top:-(i/s-e)/2,left:0})})}function h(){var i=0,n=0;o.each(function(){n+=t(this).outerHeight(),i+=t(this).outerWidth()}),(u!==n||d!==i)&&e(),setTimeout(h,a.throttle)}var o=this,n=o.find("img").addClass("loading").css({position:"absolute"}),s=1,u=0,d=0,r={runOnce:!1,throttle:200},a=t.extend({},r,i),c=o.css("position");return o.css({overflow:"hidden",position:"static"===c?"relative":c}),o.each(function(){u+=t(this).outerHeight(),d+=t(this).outerWidth()}),o.imagesLoaded().done(function(){s=n.width()/n.height(),n.removeClass("loading"),e(),a.runOnce||h()}),this}}(jQuery);
+
+ ;(function($) {
+
+  $.fn.imagefill = function(options) {
+
+    var $container = this,
+        $img = $container.find('img').addClass('loading').css({'position':'absolute'}),
+        imageAspect = 1/1,
+        containersH = 0,
+        containersW = 0,
+        defaults = {
+          runOnce: false,
+          throttle : 200  // 5fps
+        },
+        settings = $.extend({}, defaults, options);
+
+    // make sure container isn't position:static
+    var containerPos = $container.css('position');
+    $container.css({'overflow':'hidden','position':(containerPos === 'static') ? 'relative' : containerPos});
+
+    // set containerH, containerW
+    $container.each(function() {
+      containersH += $(this).outerHeight();
+      containersW += $(this).outerWidth();
+    });
+
+    // wait for image to load, then fit it inside the container
+    $container.imagesLoaded().done(function(img) {
+      imageAspect = $img.width() / $img.height();
+      $img.removeClass('loading');
+      fitImages();
+      if (!settings.runOnce) {
+        checkSizeChange();
+      }
+    });
+
+    function fitImages() {
+      containersH  = 0;
+      containersW = 0;
+      $container.each(function() {
+        imageAspect = $(this).find('img').width() / $(this).find('img').height();
+        var containerW = $(this).outerWidth(),
+            containerH = $(this).outerHeight();
+        containersH += $(this).outerHeight();
+        containersW += $(this).outerWidth();
+
+        var containerAspect = containerW/containerH;
+        if (containerAspect < imageAspect) {
+          // taller
+          $(this).find('img').css({
+              width: 'auto',
+              height: containerH,
+              top:0,
+              left:-(containerH*imageAspect-containerW)/2
+            });
+        } else {
+          // wider
+          $(this).find('img').css({
+              width: containerW,
+              height: 'auto',
+              top:-(containerW/imageAspect-containerH)/2,
+              left:0
+            });
+        }
+      });
+    }
+
+    function checkSizeChange() {
+      var checkW = 0,
+          checkH = 0;
+      $container.each(function() {
+        checkH += $(this).outerHeight();
+        checkW += $(this).outerWidth();
+      });
+      if (containersH !== checkH || containersW !== checkW) {
+        fitImages();
+      }
+      setTimeout(checkSizeChange, settings.throttle);
+    }
+    
+    return this;
+  };
+
+}(jQuery));
