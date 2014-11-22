@@ -3,6 +3,10 @@
 //= require_tree .
 
 $(function() {
-  $('.img-holder').imageScroll();
+  var touch = Modernizr.touch;
+  $('.img-holder').imageScroll({
+    imageAttribute: (touch === true) ? 'image-mobile' : 'image',
+    touch: touch
+  });
   $('.listing figure').imagefill(); 
 });

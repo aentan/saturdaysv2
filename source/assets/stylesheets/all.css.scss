@@ -103,12 +103,13 @@ body {
 
 #intro {
   @include bullseye;
-  position: relative;
+  position: absolute;
   z-index: $z-section;
   color: #fff;
   max-width: $screen-xxs;
+  width: 100%;
   text-align: center;
-  margin-top: 8px;
+  margin-top: -64px;
   margin-bottom: 32px;
   @media (min-width: $screen-sm-min) {
     max-width: $screen-sm;
@@ -139,6 +140,7 @@ body {
 
 .img-holder,
 .imageHolder {
+  position: relative;
   .caption {
     @include bullseye;
     position: absolute;
