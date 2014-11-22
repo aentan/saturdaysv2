@@ -106,17 +106,30 @@ body {
   position: relative;
   z-index: $z-section;
   color: #fff;
-  max-width: $screen-md;
+  max-width: $screen-xs;
   text-align: center;
   margin-top: -64px;
   margin-bottom: 32px;
   padding: 0 32px;
+  @media (min-width: $screen-sm-min) {
+    max-width: $screen-sm;
+  }
+  @media (min-width: $screen-md-min) {
+    max-width: $screen-md;
+  }
   h1 {
-    margin: 0;
+    margin: 0 0 32px;
+    line-height: 1.25;
   }
   p {
     margin: 0 auto 32px;
-    max-width: 352px;
+    max-width: $screen-xs;
+    @media (min-width: $screen-sm-min) {
+      max-width: $screen-sm;
+    }
+    @media (min-width: $screen-md-min) {
+      max-width: $screen-md;
+    }
   }
 }
 
@@ -125,17 +138,29 @@ body {
 
 .img-holder,
 .imageHolder {
-  h2 {
+  .caption {
     @include bullseye;
     position: absolute;
     padding: 0 32px;
-    color: white;
-    font-size: 32px;
     text-align: center;
     z-index: $z-section;
     width: 100%;
-    margin: 0;
-    max-width: $screen-md;
+    color: white;
+    max-width: $screen-xs;
+    @media (min-width: $screen-sm-min) {
+      max-width: $screen-sm;
+    }
+    @media (min-width: $screen-md-min) {
+      max-width: $screen-md;
+    }
+    h2 {
+      font-size: 32px;
+      line-height: 1.5;
+      margin: 0;
+    }
+    p {
+      line-height: 1.5;
+    }
   }
 }
 
@@ -148,7 +173,6 @@ body {
   padding-right: 32px;
   .container {
     margin: 96px auto;
-    max-width: $screen-sm;
     text-align: center;
   }
 }
@@ -196,7 +220,6 @@ body {
   .filter {
     float: left;
     width: 100%;
-    border-left: 1px solid $grid-border;
     margin-top: 16px;
     @media (min-width: $screen-sm-min) {
       width: 50%;
