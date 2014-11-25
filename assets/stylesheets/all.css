@@ -635,34 +635,41 @@ a {
 /* line 29, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
 body {
   background-color: #fff;
-  color: #787E8F; }
-  /* line 32, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+  color: #787E8F;
+  padding-top: 64px; }
+  /* line 33, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
   body > section {
     background-color: #fff; }
 
 @media (max-width: 991px) {
-  /* line 41, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+  /* line 42, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
   .responsive-xs {
     display: block; }
 
-  /* line 44, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+  /* line 45, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
   .responsive-md {
     display: none; } }
 @media (min-width: 992px) {
-  /* line 50, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+  /* line 51, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
   .responsive-xs {
     display: none; }
 
-  /* line 53, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+  /* line 54, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
   .responsive-md {
     display: block; } }
-/* line 61, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+/* line 62, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
 .navbar {
+  width: 100%;
   height: 64px;
   background-color: #fff;
-  overflow: hidden; }
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1010;
+  border-bottom: 1px solid #BDC3C7; }
 
-/* line 67, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+/* line 74, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
 .navbar-brand {
   font: 0/0 a;
   color: transparent;
@@ -678,7 +685,7 @@ body {
   background: url("../images/saturdays-logo.png") no-repeat 0 0;
   background-size: 85px 40px; }
   @media (min-width: 992px) {
-    /* line 67, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+    /* line 74, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
     .navbar-brand {
       left: 16px;
       top: 8px;
@@ -686,22 +693,22 @@ body {
       height: 56px;
       background-size: 135px 64px; } }
 
-/* line 86, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+/* line 93, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
 .navbar nav {
   position: absolute;
   right: 16px;
   top: 10px; }
-  /* line 90, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+  /* line 97, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
   .navbar nav ul {
     margin: 0;
     padding: 0; }
-    /* line 93, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+    /* line 100, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
     .navbar nav ul li {
       float: left;
       display: inline-block;
       margin-left: 8px; }
 
-/* line 104, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+/* line 111, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
 #intro {
   top: 50%;
   left: 50%;
@@ -718,37 +725,37 @@ body {
   margin-top: -64px;
   margin-bottom: 32px; }
   @media (min-width: 768px) {
-    /* line 104, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+    /* line 111, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
     #intro {
       max-width: 768px;
       margin-top: -64px;
       padding: 0 32px; } }
   @media (min-width: 992px) {
-    /* line 104, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+    /* line 111, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
     #intro {
       max-width: 992px; } }
-  /* line 122, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+  /* line 129, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
   #intro h1 {
     margin: 0 0 32px;
     line-height: 1.25; }
-  /* line 126, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+  /* line 133, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
   #intro p {
     margin: 0 auto 32px;
     max-width: 320px; }
     @media (min-width: 768px) {
-      /* line 126, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+      /* line 133, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
       #intro p {
         max-width: 768px; } }
     @media (min-width: 992px) {
-      /* line 126, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+      /* line 133, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
       #intro p {
         max-width: 992px; } }
 
-/* line 141, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+/* line 148, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
 .img-holder,
 .imageHolder {
   position: relative; }
-  /* line 144, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+  /* line 151, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
   .img-holder .caption,
   .imageHolder .caption {
     top: 50%;
@@ -765,48 +772,48 @@ body {
     color: white;
     max-width: 320px; }
     @media (min-width: 768px) {
-      /* line 144, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+      /* line 151, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
       .img-holder .caption,
       .imageHolder .caption {
         max-width: 768px; } }
     @media (min-width: 992px) {
-      /* line 144, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+      /* line 151, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
       .img-holder .caption,
       .imageHolder .caption {
         max-width: 992px; } }
-    /* line 159, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+    /* line 166, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
     .img-holder .caption h2,
     .imageHolder .caption h2 {
       font-size: 32px;
       line-height: 1.5;
       margin: 0; }
-    /* line 164, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+    /* line 171, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
     .img-holder .caption p,
     .imageHolder .caption p {
       line-height: 1.5; }
 
-/* line 173, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+/* line 180, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
 .content {
   position: relative;
   padding-left: 32px;
   padding-right: 32px; }
-  /* line 177, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+  /* line 184, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
   .content .container {
     margin: 64px auto;
     text-align: center; }
 
-/* line 183, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+/* line 190, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
 #try {
   padding-top: 96px; }
   @media (min-width: 768px) {
-    /* line 183, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+    /* line 190, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
     #try {
       padding-top: 128px; } }
   @media (min-width: 992px) {
-    /* line 183, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+    /* line 190, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
     #try {
       padding-top: 192px; } }
-  /* line 191, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+  /* line 198, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
   #try #collage {
     position: absolute;
     top: -96px;
@@ -816,50 +823,50 @@ body {
     background: url("../images/categories-collage.png") no-repeat 0 0;
     background-size: 768px 201px; }
     @media (min-width: 768px) {
-      /* line 191, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+      /* line 198, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
       #try #collage {
         top: -128px;
         background-size: 992px 261px;
         height: 261px; } }
     @media (min-width: 992px) {
-      /* line 191, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+      /* line 198, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
       #try #collage {
         top: -192px;
         background-size: 1440px 378px;
         height: 378px; } }
 
-/* line 212, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+/* line 219, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
 #filters {
   padding: 0;
   border-bottom: 1px solid #BDC3C7; }
-  /* line 215, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+  /* line 222, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
   #filters h2 {
     text-align: center; }
-  /* line 218, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+  /* line 225, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
   #filters .container {
     max-width: 100%;
     margin: 32px auto 0;
     text-align: left; }
-  /* line 223, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+  /* line 230, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
   #filters .filter {
     float: left;
     width: 100%;
     margin-top: 16px; }
     @media (min-width: 768px) {
-      /* line 223, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+      /* line 230, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
       #filters .filter {
         width: 50%; } }
     @media (min-width: 992px) {
-      /* line 223, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+      /* line 230, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
       #filters .filter {
         width: 25%; } }
-  /* line 234, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+  /* line 241, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
   #filters .filter-head,
   #filters .filter-option {
     position: relative;
     float: left;
     width: 100%; }
-    /* line 239, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+    /* line 246, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
     #filters .filter-head:before,
     #filters .filter-option:before {
       position: absolute;
@@ -869,26 +876,26 @@ body {
       background: #fff;
       left: 0;
       top: 0; }
-    /* line 248, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+    /* line 255, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
     #filters .filter-head span,
     #filters .filter-option span {
       display: block;
       padding: 4px 0 4px 32px; }
-  /* line 253, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+  /* line 260, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
   #filters .filter-head {
     color: #2860D5; }
-  /* line 256, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+  /* line 263, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
   #filters .filter-option {
     cursor: pointer; }
-    /* line 258, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+    /* line 265, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
     #filters .filter-option span {
       border-top: 1px solid #BDC3C7; }
-    /* line 261, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+    /* line 268, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
     #filters .filter-option input[type="checkbox"] {
       position: absolute;
       right: 4px;
       top: 4px; }
-      /* line 265, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+      /* line 272, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
       #filters .filter-option input[type="checkbox"]:after {
         content: '';
         position: absolute;
@@ -897,23 +904,23 @@ body {
         width: 48px;
         height: 48px;
         background-color: #fff; }
-      /* line 274, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+      /* line 281, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
       #filters .filter-option input[type="checkbox"]:checked:after {
         background: #fff url("../images/checkmark.png") 50% 50% no-repeat;
         background-size: 12px 10px; }
   @media (min-width: 768px) {
-    /* line 280, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+    /* line 287, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
     #filters #filter-categories {
       width: 100%; } }
   @media (min-width: 992px) {
-    /* line 280, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+    /* line 287, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
     #filters #filter-categories {
       width: 50%; } }
   @media (min-width: 768px) {
-    /* line 287, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+    /* line 294, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
     #filters #filter-categories .filter-option {
       width: 50%; } }
-  /* line 293, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+  /* line 300, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
   #filters .filter-apply {
     border: 0;
     background: none;
@@ -922,7 +929,7 @@ body {
     border-top: 1px solid #BDC3C7;
     color: #2860D5; }
 
-/* line 306, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+/* line 313, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
 #listings {
   background-color: #EFEFF4;
   padding: 20px 16px; }
@@ -934,58 +941,58 @@ body {
   #listings:after {
     clear: both; }
 
-/* line 312, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+/* line 319, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
 .listing {
   float: left;
   padding: 16px;
   width: 100%; }
   @media (min-width: 768px) {
-    /* line 312, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+    /* line 319, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
     .listing {
       width: 50%; } }
   @media (min-width: 992px) {
-    /* line 312, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+    /* line 319, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
     .listing {
       width: 33.333%; } }
-  /* line 322, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+  /* line 329, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
   .listing figure {
     width: 100%;
     height: 160px;
     margin: 0; }
-  /* line 327, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+  /* line 334, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
   .listing .listing-summary {
     background: #fff;
     border: 1px solid #BDC3C7;
     border-top: 0;
     padding: 20px 24px;
     line-height: 1.2; }
-  /* line 334, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+  /* line 341, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
   .listing h3,
   .listing p {
     margin: 0 0 8px; }
 
-/* line 340, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+/* line 347, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
 body > footer {
   background: #2860D5;
   color: white;
   margin: 0;
   padding: 48px 32px; }
-  /* line 345, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+  /* line 352, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
   body > footer a {
     color: white; }
-  /* line 348, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+  /* line 355, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
   body > footer nav {
     text-align: center;
     margin-bottom: 32px; }
-    /* line 351, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+    /* line 358, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
     body > footer nav ul {
       margin: 0;
       padding: 0; }
-      /* line 354, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+      /* line 361, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
       body > footer nav ul li {
         display: inline-block;
         margin: 0 12px; }
-  /* line 360, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
+  /* line 367, /Users/Aen/repos/saturdays/source/assets/stylesheets/all.css.scss */
   body > footer #copyright {
     text-align: center;
     font-size: 14px; }
